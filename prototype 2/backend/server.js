@@ -1,7 +1,7 @@
 const { default: axios } = require("axios");
 const qs = require("querystring");
 
-class user {
+class User {
   constructor(userID, partnerID) {
     // this.userMessageLog = userMessageLog;
     // this.partnerMessageLog = partnerMessageLog;
@@ -14,7 +14,7 @@ class user {
   }
 }
 
-let user1 = new user(69, 420);
+let user1 = new User(69, 420);
 
 user1.userMessageLog.push("hey");
 user1.partnerMessageLog.push("howdy");
