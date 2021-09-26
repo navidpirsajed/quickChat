@@ -1,0 +1,25 @@
+div {
+  border: dotted green 2px;
+}
+
+body {
+  justify-content: space-between;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+#userIDDisplay {
+  width: 49%;
+  float: right;
+}
+
+#SettingButton {
+  width: 10%;
+  float: left;
+}
+
+#partnerID {
+  width: 100%;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <input
+      type="text"
+      name="userMessageInputField"
+      id="userMessageInputField"
+    />
+    <input type="button" value="submit" onclick="updateUserMessage()" />
+    <script>
+      const userMessageInputField = document.getElementById(
+        "userMessageInputField"
+      );
+
+      //debugging var
+      const backendURL =
+        "https://d6e9f5fd-a00a-4de6-8ffd-06253fe9b405.mock.pstmn.io/cus";
+
+      var userData = {
+        userMessage: "",
+        partnerMessage: "",
+        userID: "",
+        partnerID: "",
+      };
+      var transmitSuccess = false;
+
+      // Is ran when submit button is pressed and updates userMessage var with the value of userMessageInputField
+      function updateUserMessage() {
+        userData.userMessage = userMessageInputField.value;
+        syncWithServer();
+      }
+
+      function sendPostRequest(url, requestBody) {
+        return $.post(url, requestBody);
+      }
+
+      //
+      var serverResponse;
+
+      //   let syncWithServer = new Promise((resolve, reject) => {
+      //     serverResponse = sendPostRequest(backendURL, userData)
+
+      //   })
+
+      function syncWithServer() {
+        // serverResponse = sendPostRequest(backendURL, userData)
+        serverResponse = $.post(backendURL, userData, function (data) {
+          userData.partnerMessage = JSON.parse(data).partnerMessage;
+          //   alert(JSON.parse(data).partnerMessage)
+        });
+      }
+    </script>
+  </body>
+</html>
